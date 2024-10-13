@@ -13,6 +13,8 @@ import {
   Cog,
   LucideIcon,
 } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { CategoryCard } from "@/components/CategoryCard";
 
 interface Category {
   name: string;
@@ -33,25 +35,6 @@ const categories: Category[] = [
   { name: "Engineering", icon: Cog, slug: "engineering" },
 ];
 
-interface CategoryCardProps {
-  name: string;
-  icon: LucideIcon;
-  slug: string;
-}
-
-const CategoryCard: React.FC<CategoryCardProps> = ({
-  name,
-  icon: Icon,
-  slug,
-}) => (
-  <Link href={`/category/${slug}`} className="block">
-    <div className="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
-      {Icon && <Icon className="w-12 h-12 text-blue-500 mb-4" />}
-      <h2 className="text-xl font-semibold text-gray-800">{name}</h2>
-    </div>
-  </Link>
-);
-
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8">
@@ -64,7 +47,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {categories.map((category) => (
           <CategoryCard
             key={category.name}
